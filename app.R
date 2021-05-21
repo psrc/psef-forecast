@@ -38,6 +38,9 @@ pre.gr.peak <- yq("2008:Q1")
 
 pre.dc.peak <- yq("2000:Q4")
 
+# Shiny Server Working Directory
+wrkdir <- "/home/shiny/apps/psef-forecast/data"
+
 # Functions ---------------------------------------------------------------
 
 create.bar.charts <- function(d, metric, s.yr, lbls, suff="", fact=1, deci = 0, w.pre="") {
@@ -85,7 +88,7 @@ col.billions <- c("Personal income (bils. $12)","Personal income (bils. $)","Wag
 
 col.asis <- c("Per capita personal income ($)", "Consumer price index (82-84=1.000)")
 
-region.forecast.data  <- read_excel("data\\Quarterly-Forecast-CV03-2021.xls", sheet="Region", skip=9) %>%
+region.forecast.data  <- read_excel(file.path(wrkdir,"Quarterly-Forecast-CV03-2021.xls"), sheet="Region", skip=9) %>%
     drop_na() %>%
     rename(Metric=1) %>%
     select(-2) %>%
@@ -132,7 +135,7 @@ col.thousands <- c("Housing permits (thous.)", "Single-family", "Multi-family", 
 col.shares <- c("Apartment vacancy rate (%)")
 col.asis <- c("Average apartment rent ($)")
 
-region.housing.data  <- read_excel("data\\Quarterly-Forecast-CV03-2021.xls", sheet="Housing", skip=9) %>%
+region.housing.data  <- read_excel(file.path(wrkdir,"Quarterly-Forecast-CV03-2021.xls"), sheet="Housing", skip=9) %>%
     drop_na() %>%
     rename(Metric=1) %>%
     slice(-(4:6)) %>%
@@ -153,7 +156,7 @@ col.thousands <- c("Housing permits (thous.)", "Single-family", "Multi-family", 
 col.shares <- c("Apartment vacancy rate (%)")
 col.asis <- c("Average apartment rent ($)")
 
-region.sales.data  <- read_excel("data\\Quarterly-Forecast-CV03-2021.xls", sheet="Retail Sales", skip=9) %>%
+region.sales.data  <- read_excel(file.path(wrkdir,"Quarterly-Forecast-CV03-2021.xls"), sheet="Retail Sales", skip=9) %>%
     drop_na() %>%
     rename(Metric=1) %>%
     slice(-(14:15)) %>%
