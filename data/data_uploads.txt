@@ -1,0 +1,5 @@
+Data for the dashboard must be copied from a local source to folder on the shiny server for the dashboard to work. We don't want to store the input files on GitHub. 
+The following can be run from the host machine to copy to the server (check the fodler locations):
+
+scp -r X:/DSA/shiny-uploads/psef-forecast/data/*  shiny@aws-linux:~/apps/psef-forecast/data/
+
